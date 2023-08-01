@@ -95,3 +95,92 @@ function mainFunction() {
 };
 
 mainFunction();
+
+/* QUESTION 05
+5. You have learned the function indexOf. Code your own custom
+function that will perform the same functionality. You can code
+for single character as of now. */
+
+document.write("<h2> Question 05 </h2>")
+
+function customIndexof(str, char) {
+
+    for (var i = 0; i < str.length; i++) {
+        if (str[i] === char) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+var str = prompt("Enter a sentence");
+var char = prompt("Enter a character to search in sentence");
+
+var result = customIndexof(str, char);
+document.write("The index of the character " + char + " in the sentence: " + str + " is: " + result);
+
+/* QUESTION 06*
+6. Write a function to delete all vowels from a sentence. Assume
+that the sentence is not more than 25 characters long. */
+
+document.write("<h2> Question 06 </h2>")
+
+function deleteVowels(sen, del) {
+
+    let result = "";
+
+    for (var i = 0; i < sen.length; i++) {
+        if (sen[i] !== del) {
+
+            result += sen[i];
+        }
+    }
+    return result
+}
+
+var sentence = prompt("Enter a sentence");
+var vowelToRemove = prompt("Enter a vowel you want to remove from your sentence (a,e,i,o,u)");
+
+var result = deleteVowels(sentence, vowelToRemove);
+document.write("Original sentence: " + sentence + "</br>");
+document.write("Deleted Vowel: " + vowelToRemove + "</br>");
+document.write("Updated Sentence: " + result);
+
+/* QUESTION 07 
+7. Write a function with switch statement to count the number of
+occurrences of any two vowels in succession in a line of text.
+For example, in the sentence
+“Pleases read this application and give me gratuity”
+Such occurrences are ea, ea, ui. */
+
+document.write("<h2> Question 07 </h2>")
+
+function countVowels(sentence) {
+
+    sentence = sentence.toLowerCase();
+    var count = 0;
+    var matchPairs = [];
+
+    for (var i = 0; i < sentence.length; i++) {
+
+        var pair = sentence[i - 1] + sentence[i];
+
+        switch (pair) {
+
+            case "aa": case "ae": case "ai": case "ao": case "au":
+            case "ea": case "ee": case "ei": case "eo": case "eu":
+            case "ia": case "ie": case "ii": case "io": case "iu":
+            case "oa": case "oe": case "oi": case "oo": case "ou":
+            case "ua": case "ue": case "ui": case "uo": case "uu":
+
+                count++;
+                matchPairs.push(pair);
+        }
+    }
+    
+    var sentence = prompt("Enter a sentence");
+    var result = countVowels(sentence);
+    document.write("In sentence: " + sentence + " we get pairs: " + matchPairs.join(", ") + "<br>");
+    document.write("Number of occurrences of any two consecutive vowels: " + result);
+    return count;
+}
