@@ -177,10 +177,53 @@ function countVowels(sentence) {
                 matchPairs.push(pair);
         }
     }
-    
+
     var sentence = prompt("Enter a sentence");
     var result = countVowels(sentence);
-    document.write("In sentence: " + sentence + " we get pairs: " + matchPairs.join(", ") + "<br>");
-    document.write("Number of occurrences of any two consecutive vowels: " + result);
+    document.write
+        ("In sentence: " + sentence + " we get pairs: " + matchPairs.join(", ") + "<br>");
+    document.write
+        ("Number of occurrences of any two consecutive vowels: " + result);
     return count;
 }
+
+/* QUESTION 08
+8. The distance between two cities (in km.) is input through the
+keyboard. Write four functions to convert and print this
+distance in meters, feet, inches and centimeters. */
+
+document.write("<h2> Question 08 </h2>")
+
+function meters(kilometers) {
+    return kilometers * 1000;
+}
+
+function feet(kilometers) {
+    return kilometers * 3280.84;
+}
+
+function inches(kilometers) {
+    return kilometers * 39370.1;
+}
+
+function centimeters(kilometers) {
+    return kilometers * 100000;
+}
+
+var kilometers = prompt("Enter the distance in KM between two cities");
+
+const distanceInMeters = meters(kilometers);
+const distanceInFeet = feet(kilometers);
+const distanceInches = inches(kilometers);
+const distanceInCentimeters = centimeters(kilometers);
+
+document.write("Distance in Meters: " + distanceInMeters + "</br>");
+document.write("Distance in Feet: " + distanceInFeet + "</br>");
+document.write("Distance in Inches: " + distanceInches + "</br>");
+document.write("Distance in Centimeters: " + distanceInCentimeters);
+
+/* QUESTION 09
+9. Write a program to calculate overtime pay of employees.
+Overtime is paid at the rate of Rs. 12.00 per hour for every hour
+worked above 40 hours. Assume that employees do not work
+for fractional part of an hour. */
