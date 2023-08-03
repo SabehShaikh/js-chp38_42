@@ -1,5 +1,9 @@
 // Assignment # 38-42 FUNCTIONS, SWITCH STATEMENTS, WHILE... DO-WHILE LOOPS
 
+document.write("<h1> Functions , Switch Statements, While and Do while Loops. </h1>");
+
+document.write("<h2> Chapter 38-42 </h2>");
+
 /* QUESTION 01
 1. Write a custom function power ( a, b ), to calculate the value of
 a raised to b. */
@@ -153,39 +157,42 @@ For example, in the sentence
 “Pleases read this application and give me gratuity”
 Such occurrences are ea, ea, ui. */
 
-document.write("<h2> Question 07 </h2>")
+document.write("<h2> Question 07 </h2>");
+
+var matchPairs = []; // Move the declaration outside the function
 
 function countVowels(sentence) {
-
     sentence = sentence.toLowerCase();
     var count = 0;
-    var matchPairs = [];
 
-    for (var i = 0; i < sentence.length; i++) {
-
+    for (var i = 1; i < sentence.length; i++) {
         var pair = sentence[i - 1] + sentence[i];
 
         switch (pair) {
-
             case "aa": case "ae": case "ai": case "ao": case "au":
             case "ea": case "ee": case "ei": case "eo": case "eu":
             case "ia": case "ie": case "ii": case "io": case "iu":
             case "oa": case "oe": case "oi": case "oo": case "ou":
             case "ua": case "ue": case "ui": case "uo": case "uu":
-
                 count++;
                 matchPairs.push(pair);
+                break;
+
+            default:
+                break;
         }
     }
-
-    var sentence = prompt("Enter a sentence");
-    var result = countVowels(sentence);
-    document.write
-        ("In sentence: " + sentence + " we get pairs: " + matchPairs.join(", ") + "<br>");
-    document.write
-        ("Number of occurrences of any two consecutive vowels: " + result);
     return count;
 }
+
+var sentence = prompt("Enter a sentence");
+var result = countVowels(sentence);
+
+document.write("In sentence: " + sentence + ", we get pairs: " + matchPairs.join(", ") + "<br>");
+document.write("Number of occurrences of any two consecutive vowels: " + result);
+
+
+
 
 /* QUESTION 08
 8. The distance between two cities (in km.) is input through the
@@ -217,13 +224,67 @@ const distanceInFeet = feet(kilometers);
 const distanceInches = inches(kilometers);
 const distanceInCentimeters = centimeters(kilometers);
 
-document.write("Distance in Meters: " + distanceInMeters + "</br>");
-document.write("Distance in Feet: " + distanceInFeet + "</br>");
-document.write("Distance in Inches: " + distanceInches + "</br>");
-document.write("Distance in Centimeters: " + distanceInCentimeters);
+document.write("Distance in Meters: " + distanceInMeters + " meters </br>");
+document.write("Distance in Feet: " + distanceInFeet + " feet </br>");
+document.write("Distance in Inches: " + distanceInches + " inches </br>");
+document.write("Distance in Centimeters: " + distanceInCentimeters + " centimeters");
 
 /* QUESTION 09
 9. Write a program to calculate overtime pay of employees.
 Overtime is paid at the rate of Rs. 12.00 per hour for every hour
 worked above 40 hours. Assume that employees do not work
 for fractional part of an hour. */
+
+
+document.write("<h2> Question 09 </h2>")
+
+function overtimePay(hoursWorked) {
+    var overtimeRate = 12.00;
+    var hours = 40;
+
+    var overtimeHours = 0;
+    var overtimeMoney = 0;
+
+    if (hoursWorked > hours) {
+        overtimeHours = hoursWorked - hours;
+        overtimeMoney = overtimeHours * overtimeRate;
+    }
+    return overtimeMoney;
+}
+
+var hoursWorked = prompt("Enter the total hours worked in a week");
+var overtimeMoney = overtimePay(hoursWorked);
+
+document.write("Total hours worked in a week " + hoursWorked + "</br>")
+document.write("Overtime money is Rs: " + overtimeMoney);
+
+/* QUESTION 10
+10. A cashier has currency notes of denominations 10, 50 and
+100. If the amount to be withdrawn is input through the
+keyboard in hundreds, find the total number of currency notes
+of each denomination the cashier will have to give to the
+withdrawer. */
+
+
+document.write("<h2> Question 10 </h2>")
+
+
+function calculateNotes(amountInHundreds) {
+
+    var denominations = [100, 50, 10];
+    var notes = [0, 0, 0];
+
+    for (var i = 0; i < denominations.length; i++) {
+        notes[i] = Math.floor(amountInHundreds / denominations[i]);
+        amountInHundreds = amountInHundreds % denominations[i];
+    }
+    return notes;
+}
+
+var amountInHundreds = +prompt("Enter the amount");
+var notes = calculateNotes(amountInHundreds);
+
+document.write("Amount is: " + amountInHundreds + "</br>")
+document.write("Number of 100 notes: " + notes[0] + "</br>");
+document.write("Number of 50 notes: " + notes[1] + "</br>");
+document.write("Number of 10 notes: " + notes[2]);
